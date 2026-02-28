@@ -1,10 +1,30 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Text>Hola, ya iniciaste sesion</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Hola</Text>
+      <Text style={styles.subtitle}>Ya iniciaste session</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: '#4CAF50',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+  }
+});
