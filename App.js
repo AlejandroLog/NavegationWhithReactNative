@@ -1,30 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // <--- Asegúrate de que { useState } esté aquí
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from './src/screens/LoginScreen';
-import HomeScreen from './src/screens/HomeScreen';
-
-const Stack = createNativeStackNavigator();
+import { MainNavigator } from './src/navigation/MainNavigator';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {!isLoggedIn ? (
-          <Stack.Screen name="Login" options={{ headerShown: false }}>
-            {() => <LoginScreen onLoginSuccess={() => setIsLoggedIn(true)} />}
-          </Stack.Screen>
-        ):(
-
-          <Stack.Screen 
-            name="Home" 
-            component={HomeScreen} 
-            options={{ title: 'Inicio' }} 
-          />
-        )}
-      </Stack.Navigator>
+      <MainNavigator 
+        isLoggedIn={isLoggedIn} 
+        onLoginSuccess={() => setIsLoggedIn(true)} 
+        onLogout={() => setIsLoggedIn(false)} 
+      />
     </NavigationContainer>
   );
 }
