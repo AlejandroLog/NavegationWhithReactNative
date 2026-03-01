@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import CustomButton from '../../components/common/CustomButton';
 
@@ -37,7 +37,11 @@ export default function CreateOrder({ navigation, addOrder, onLogout }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView 
+      style={styles.mainContainer} 
+      contentContainerStyle={styles.scrollContent}
+      showsVerticalScrollIndicator={false}
+    >
       <Text style={styles.title}>NEW ORDER</Text>
 
       <Text style={styles.label}>Type Pizza:</Text>
@@ -75,26 +79,33 @@ export default function CreateOrder({ navigation, addOrder, onLogout }) {
         <CustomButton title="SAVE" onPress={handleSave} color="#4CAF50" />
         <CustomButton title="EXIT" onPress={onLogout} color="#ec1111" />
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#faf8f7', padding: 20 },
-  title: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginBottom: 20 },
-  label: { fontSize: 16, fontWeight: '600', marginTop: 10 },
+  mainContainer: { 
+    flex: 1, 
+    backgroundColor: '#faf8f7',
+  },
+  scrollContent: {
+    padding: 20,
+    paddingBottom: 40, 
+  },
+  title: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginBottom: 10 },
+  label: { fontSize: 16, fontWeight: '600', marginTop: 5 },
   pickerContainer: { 
     backgroundColor: '#fff', 
     borderRadius: 8, 
-    marginVertical: 5, 
+    marginVertical: 0, 
     borderWidth: 1, 
-    borderColor: '#ddd' 
+    borderColor: '#ddd',
   },
   totalContainer: {
     backgroundColor: '#e7e1e1',
-    padding: 20,
+    padding: 15,
     borderRadius: 12,
-    marginTop: 20,
+    marginTop: 15,
     alignItems: 'center',
     borderWidth: 2,
     borderColor: '#24d12a',
@@ -102,5 +113,5 @@ const styles = StyleSheet.create({
   },
   totalLabel: { fontSize: 14, color: '#666', fontWeight: 'bold' },
   totalAmount: { fontSize: 32, fontWeight: 'bold', color: '#2E7D32' },
-  buttonRow: { marginTop: 20, gap: 10 }
+  buttonRow: { marginTop: 15, gap: 10 }
 });
