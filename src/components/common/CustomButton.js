@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native'; // <--- Revisa que StyleSheet esté aquí
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 export default function CustomButton({ title, onPress, color = '#4CAF50' }) {
   return (
     <TouchableOpacity 
@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
-    elevation: 3, // Sombra en Android
-    shadowColor: '#000', // Sombra en iOS
+    elevation: 3,
+    shadowColor: '#000', 
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
   },

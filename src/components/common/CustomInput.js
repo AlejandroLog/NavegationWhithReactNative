@@ -11,7 +11,7 @@ export default function CustomInput({ placeholder, value, onChangeText, secureTe
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
         autoCapitalize={autoCapitalize}
-        placeholderTextColor="#999"
+        placeholderTextColor="#858585"
       />
     </View>
   );

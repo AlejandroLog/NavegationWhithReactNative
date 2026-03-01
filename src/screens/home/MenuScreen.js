@@ -17,7 +17,7 @@ export default function MenuScreen({ navigation }) {
         <CustomButton 
           title="EXIT" 
           onPress={() => navigation.goBack()} 
-          color="#f0ba92" // Un color similar al de tu diseño
+          color="#f52a06"
         />
       </View>
     </View>

@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 export default function UsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Vista de Nosotros</Text>
+      <Text>Us</Text>
     </View>
   );
 }

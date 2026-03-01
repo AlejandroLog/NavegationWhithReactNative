@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Alert, StyleSheet } from 'react-native';
 
-// Importaciones directas (sin usar index.js)
 import CustomInput from '../../components/common/CustomInput'; 
 import CustomButton from '../../components/common/CustomButton';
 
@@ -12,7 +11,6 @@ export default function LoginScreen({ onLoginSuccess }) {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    // Buscamos en la data (esto se queda igual por ahora)
     const userFound = USERS.find(
       (u) => u.username === username.toLowerCase() && u.password === password
     );
