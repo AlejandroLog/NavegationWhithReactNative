@@ -5,14 +5,14 @@ import CustomButton from '../../components/common/CustomButton';
 export default function UsScreen({ navigation }) {
   
   const openFacebook = () => {
-    Linking.openURL('https://www.facebook.com/profile.php?id=100063778031526');
+    Linking.openURL('https://www.pizzahut.com.mx/');
   };
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       
       <View style={styles.headerContainer}>
-        <Text style={styles.mainTitle}>SEATTLE ROCK PIZZA</Text>
+        <Text style={styles.mainTitle}>SEATTLE PIZZA</Text>
         <Text style={styles.subtitle}>Sabor y Distorsión</Text>
       </View>
 

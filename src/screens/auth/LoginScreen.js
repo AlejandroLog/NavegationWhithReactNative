@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import CustomInput from '../../components/common/CustomInput'; 
+import { 
+  View, Text, Alert, StyleSheet, KeyboardAvoidingView, 
+  Platform, ScrollView 
+} from 'react-native';
+import LottieView from 'lottie-react-native'; 
+import CustomInput from '../../components/common/CustomInput';
 import CustomButton from '../../components/common/CustomButton';
 import { USERS } from '../../data/users';
 
@@ -11,7 +15,7 @@ export default function LoginScreen({ onLoginSuccess }) {
 
   const handleLogin = () => {
     if (!username || !password) {
-      Alert.alert('Camp void', 'Add your data.');
+      Alert.alert('empty', 'add your username and password');
       return;
     }
 
@@ -22,30 +26,32 @@ export default function LoginScreen({ onLoginSuccess }) {
     if (userFound) {
       onLoginSuccess();
     } else {
-      Alert.alert('Error', 'User or Password Incorrect.');
+      Alert.alert('Error', 'user or password is incorrect');
     }
   };
 
   return (
-    <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer} bounces={false}>
         
         <View style={styles.headerContainer}>
-          <View style={styles.logoPlaceholder}>
-            <Text style={styles.logoText}>AS</Text> 
-          </View>
-          <Text style={styles.title}>WElcome</Text>
-          <Text style={styles.subtitle}>Sesion init</Text>
+          <LottieView
+            source={require('../../../assets/animations/pizza.json')}            autoPlay
+            loop
+            style={styles.lottiePizza}
+          />
+          <Text style={styles.title}>Pizza Seatle</Text>
+          <Text style={styles.subtitle}>¡Welcome!</Text>
         </View>
 
         <View style={styles.card}>
           <View style={styles.formContainer}>
             <Text style={styles.label}>User</Text>
             <CustomInput
-              placeholder="User"
+              placeholder="Write your username"
               value={username}
               onChangeText={setUsername}
               autoCapitalize="none"
@@ -53,7 +59,7 @@ export default function LoginScreen({ onLoginSuccess }) {
             
             <Text style={styles.label}>Contraseña</Text>
             <CustomInput
-              placeholder="Password"
+              placeholder="Write your password"
               value={password}
               onChangeText={setPassword}
               isPassword={true}
@@ -62,15 +68,14 @@ export default function LoginScreen({ onLoginSuccess }) {
             />
 
             <View style={styles.buttonSpacer}>
-              <CustomButton 
-                title="Sing In" 
-                onPress={handleLogin} 
-                color="#2D5AF0"
+              <CustomButton
+                title="Enter"
+                onPress={handleLogin}
+                color="#E63946"
               />
             </View>
           </View>
         </View>
-
 
       </ScrollView>
     </KeyboardAvoidingView>
@@ -80,56 +85,40 @@ export default function LoginScreen({ onLoginSuccess }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: '#F8F9FA',
   },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
-    padding: 20,
+    padding: 25,
   },
   headerContainer: {
     alignItems: 'center',
-    marginBottom: 30,
-  },
-  logoPlaceholder: {
-    width: 80,
-    height: 80,
-    backgroundColor: '#2D5AF0',
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
     marginBottom: 20,
-    elevation: 5,
-    shadowColor: '#2D5AF0',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
   },
-  logoText: {
-    color: '#FFF',
-    fontSize: 32,
-    fontWeight: '900',
+  lottiePizza: {
+    width: 180,
+    height: 180,
   },
   title: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#111827',
-    letterSpacing: -0.5,
+    color: '#1D3557',
+    marginTop: -10,
   },
   subtitle: {
-    fontSize: 15,
-    color: '#6B7280',
-    marginTop: 8,
-    textAlign: 'center',
+    fontSize: 16,
+    color: '#457B9D',
+    marginTop: 5,
   },
   card: {
-    backgroundColor: '#FFF',
-    borderRadius: 16,
-    padding: 24,
-    elevation: 4,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 25,
+    elevation: 8,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
     shadowRadius: 10,
   },
   formContainer: {
@@ -137,18 +126,11 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    fontWeight: '600',
-    color: '#374151',
+    fontWeight: '700',
+    color: '#1D3557',
     marginBottom: 8,
-    marginLeft: 4,
   },
   buttonSpacer: {
-    marginTop: 10,
-  },
-  footerText: {
-    textAlign: 'center',
-    color: '#9CA3AF',
-    fontSize: 12,
-    marginTop: 30,
+    marginTop: 15,
   },
 });

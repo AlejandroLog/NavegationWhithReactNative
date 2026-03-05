@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import LottieView from 'lottie-react-native';
 
 export default function HomeScreen({ navigation, onLogout }) {
   
@@ -26,13 +27,21 @@ export default function HomeScreen({ navigation, onLogout }) {
         
         <View style={styles.header}>
           <View>
-            <Text style={styles.brandText}>PizzasasPlus</Text>
+            <Text style={styles.brandText}>Pizzasas</Text>
             <Text style={styles.headerTitle}>Home Menu</Text>
           </View>
           <View style={styles.statusBadge}>
             <View style={styles.statusDot} />
             <Text style={styles.statusText}>Online</Text>
           </View>
+        </View>
+        <View style={styles.animationContainer}>
+          <LottieView
+            source={require('../../../assets/animations/phonewithpizzas.json')}
+            autoPlay
+            loop
+            style={styles.mainAnimation}
+          />
         </View>
 
         <View style={styles.menuWrapper}>
@@ -55,7 +64,7 @@ export default function HomeScreen({ navigation, onLogout }) {
           <Text style={styles.sectionLabel}>GENERAL</Text>
           <MenuCard 
             title="About Us" 
-            icon="information-bold" 
+            icon="information-circle" 
             onPress={() => navigation.navigate('Us')} 
             color="#10B981" 
           />
@@ -72,8 +81,6 @@ export default function HomeScreen({ navigation, onLogout }) {
             </View>
           </TouchableOpacity>
         </View>
-
-        <Text style={styles.versionText}>v1.0.2 - Administration Mode</Text>
       </ScrollView>
     </SafeAreaView>
   );
@@ -82,7 +89,7 @@ export default function HomeScreen({ navigation, onLogout }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: '#F9FAFB', // Color sólido limpio
   },
   scrollContent: {
     paddingHorizontal: 20,
@@ -93,8 +100,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    marginBottom: 30,
+    marginBottom: 10,
     paddingHorizontal: 5,
+  },
+  animationContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 220, 
+    marginVertical: 10,
+  },
+  mainAnimation: {
+    width: '100%',
+    height: '100%',
   },
   brandText: {
     fontSize: 12,
@@ -114,6 +131,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 20,
+    marginBottom: 5,
   },
   statusDot: {
     width: 6,
@@ -140,7 +158,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   card: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
     padding: 14,
     flexDirection: 'row',
@@ -148,6 +166,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: '#E5E7EB',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
   },
   exitCard: {
     marginTop: 20,

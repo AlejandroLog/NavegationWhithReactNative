@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import LottieView from 'lottie-react-native';
 
 export default function MenuScreen({ navigation }) {
   
@@ -22,8 +23,8 @@ export default function MenuScreen({ navigation }) {
           <Text style={styles.priceText}>${priceS}</Text>
         </View>
         <View style={[styles.priceBadge, styles.priceBadgeActive]}>
-          <Text style={styles.sizeText}>LARGE</Text>
-          <Text style={styles.priceText}>${priceL}</Text>
+          <Text style={[styles.sizeText, {color: '#9CA3AF'}]}>LARGE</Text>
+          <Text style={[styles.priceText, {color: '#FFF'}]}>${priceL}</Text>
         </View>
       </View>
     </View>
@@ -33,27 +34,36 @@ export default function MenuScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.header}>
-          <Text style={styles.headerSubtitle}>Freshly Baked</Text>
+          <Text style={styles.headerSubtitle}>Fresh Pizza</Text>
           <Text style={styles.headerTitle}>Pizza Menu</Text>
+                    <View style={styles.animationContainer}>
+            <LottieView
+              source={require('../../../assets/animations/pizzabox.json')}
+              autoPlay
+              loop
+              style={styles.boxAnimation}
+            />
+          </View>
+          
           <View style={styles.divider} />
         </View>
 
         <View style={styles.menuList}>
           <PizzaItem 
             name="HAWAIIAN" 
-            description="Ham, pineapple, and extra mozzarella cheese."
+            description="extra mozzarella cheese y piña"
             priceS="120" 
             priceL="150" 
           />
           <PizzaItem 
             name="CUBAN" 
-            description="Pulled pork, ham, mustard, and pickles."
+            description="A delicious chiriso"
             priceS="120" 
             priceL="150" 
           />
           <PizzaItem 
             name="PEPPERONI" 
-            description="Crispy pepperoni with our signature tomato sauce."
+            description="Pepperoni pepperoni pepperoni pepperoni pepperoni pepperoni"
             priceS="120" 
             priceL="160" 
           />
@@ -86,7 +96,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: 30,
+    marginBottom: 20,
     marginTop: 10,
   },
   headerSubtitle: {
@@ -100,6 +110,17 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: '900',
     color: '#111827',
+  },
+  animationContainer: {
+    width: 200,
+    height: 180,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: -10,
+  },
+  boxAnimation: {
+    width: '100%',
+    height: '100%',
   },
   divider: {
     width: 50,
@@ -154,7 +175,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   priceBadgeActive: {
-    backgroundColor: '#314369',
+    flex: 1,
+    backgroundColor: '#111827',
+    paddingVertical: 10,
+    borderRadius: 12,
+    alignItems: 'center',
   },
   sizeText: {
     fontSize: 10,
@@ -166,13 +191,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#374151',
-  },
-  priceBadgeActive: {
-    flex: 1,
-    backgroundColor: '#111827',
-    paddingVertical: 10,
-    borderRadius: 12,
-    alignItems: 'center',
   },
   exitCard: {
     marginTop: 40,
@@ -203,6 +221,3 @@ const styles = StyleSheet.create({
     color: '#EF4444',
   },
 });
-
-styles.priceTextActive = { color: '#FFF' };
-styles.sizeTextActive = { color: '#9CA3AF' };

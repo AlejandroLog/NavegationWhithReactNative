@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import LottieView from 'lottie-react-native';
 
 export default function CustomerScreen({ navigation, onLogout }) {
   
@@ -32,6 +33,15 @@ export default function CustomerScreen({ navigation, onLogout }) {
           <View style={styles.pizzaBadge}>
             <Ionicons name="pizza" size={20} color="#F59E0B" />
           </View>
+        </View>
+
+        <View style={styles.animationContainer}>
+          <LottieView
+            source={require('../../../assets/animations/chef.json')}
+            autoPlay
+            loop
+            style={styles.chefAnimation}
+          />
         </View>
 
         <View style={styles.menuWrapper}>
@@ -82,8 +92,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    marginBottom: 30,
+    marginBottom: 10,
     paddingHorizontal: 5,
+  },
+  animationContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 250,
+    marginVertical: 10,
+  },
+  chefAnimation: {
+    width: '100%',
+    height: '100%',
   },
   brandText: {
     fontSize: 12,
@@ -122,6 +142,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: '#E5E7EB',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
   exitCard: {
     marginTop: 20,
